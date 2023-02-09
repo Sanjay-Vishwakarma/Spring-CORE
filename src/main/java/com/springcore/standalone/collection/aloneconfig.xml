@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+         http://www.springframework.org/schema/util
+        https://www.springframework.org/schema/util/spring-util.xsd">
+
+	<context:annotation-config />
+
+
+	<!-- Stand alone list -->
+
+	<util:list list-class="java.util.Vector" id="mybestfriends">
+		<value>Sahil</value>
+		<value>raj</value>
+		<value>deepak</value>
+		<value>arjun</value>
+		<value>nihan</value>
+	</util:list>
+
+
+	<!-- Stand alone map -->
+
+
+	<util:map id="fees" map-class="java.util.HashMap">
+		<entry key="Spring" value="4000" />
+		<entry key="Hibernate" value="1000" />
+		<entry key="Python" value="3000" />
+	</util:map>
+
+
+	<!-- Standalone properties -->
+
+	<util:properties id="dbconfig">
+		<prop key="username">root</prop>
+		<prop key="password">welcome123</prop>
+		<prop key="dburl">http://localhost:3306/mydb</prop>
+	</util:properties>
+
+
+	<!-- inject -->
+	<bean name="person1"
+		class="com.springcore.standalone.collection.Person">
+		<!-- object name (friends) from person -->
+		<property name="friends" ref="mybestfriends" />
+
+		<!-- object name (feestructure) from person -->
+		<property name="feestructure" ref="fees" />
+
+		<!-- object name (properties) from person -->
+
+		<property name="properties" ref="dbconfig" />
+	</bean>
+
+
+
+</beans>
+

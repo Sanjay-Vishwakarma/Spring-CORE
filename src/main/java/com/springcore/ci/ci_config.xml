@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 
+	Creating another bean for getting value from another class  first way
+	<bean class="com.springcore.ci.Certi" name="cer">
+		<constructor-arg value="adroid" />
+		<constructor-arg>
+			<value>dell</value>
+		</constructor-arg>
+	</bean> -->
+
+
+<!-- Creating another bean for getting value from another class  second way-->
+	<bean class="com.springcore.ci.Certi" name="cer" c:certi="java devloper" />
+	
+
+
+
+	<bean class="com.springcore.ci.Person" name="person">
+
+		<constructor-arg value="Sanjay" />
+		<constructor-arg value="12" type="int" /> <!-- ambiguity handled by the type -->
+
+		<constructor-arg ref="cer" /> <!-- referece by getting the value -->
+
+	</bean>
+
+</beans>
